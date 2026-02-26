@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aadil | Professional Portfolio</title>
+    <style>
+        /* Professional Fonts */
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap');
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Montserrat', sans-serif; scroll-behavior: smooth; }
+        
+        body { background-color: #d6d6d6; color: #333; line-height: 1.6; padding: 40px 0; }
+
+        /* Main Container */
+        .portfolio-wrapper { width: 95%; max-width: 1100px; margin: 0 auto; display: flex; flex-direction: column; gap: 40px; }
+
+        /* Common Section Box */
+        .section-box { background: #fff; box-shadow: 0 15px 35px rgba(0,0,0,0.15); display: flex; min-height: 500px; position: relative; overflow: hidden; }
+
+        /* --- HERO SECTION --- */
+        .hero-content { flex: 1.2; padding: 80px 60px; display: flex; flex-direction: column; justify-content: center; }
+        .hero-image { 
+            flex: 1; 
+            background: url('https://res.cloudinary.com/dflairdwe/image/upload/v1769038942/IMG_20260103_091034501_HDR_2_cigtth.jpg') center/cover no-repeat;
+            background-position: center 20%;
+        }
+
+        .hero-content h2 { font-weight: 900; letter-spacing: 4px; font-size: 1.1rem; color: #444; }
+        .hero-content h1 { font-size: 5rem; font-weight: 900; line-height: 0.8; margin: 20px 0; text-transform: uppercase; }
+        .accent-yellow { color: #f2bc3c; }
+        
+        .title-badge { background: #f2bc3c; color: #000; padding: 8px 15px; font-weight: 900; font-size: 0.8rem; width: fit-content; margin-bottom: 25px; }
+        .hero-desc { color: #666; font-size: 1rem; max-width: 480px; margin-bottom: 35px; font-weight: 500; }
+
+        .cta-btn { 
+            background: #f2bc3c; color: #000; text-decoration: none; padding: 15px 40px; 
+            border-radius: 50px; font-weight: 900; font-size: 0.9rem; transition: 0.3s; width: fit-content; display: inline-block;
+        }
+        .cta-btn:hover { background: #000; color: #fff; }
+
+        /* Right Nav Dots for Hero */
+        .hero-nav { position: absolute; right: 20px; top: 50%; transform: translateY(-50%); width: 40px; background: #f2bc3c; padding: 20px 0; display: flex; flex-direction: column; align-items: center; gap: 15px; border-radius: 20px; }
+        .hero-nav span { width: 10px; height: 10px; background: rgba(0,0,0,0.4); border-radius: 50%; }
+        .hero-nav span.active { height: 25px; background: #000; border-radius: 5px; }
+
+        /* --- YELLOW SIDEBAR (For all other sections) --- */
+        .yellow-sidebar { width: 220px; background: #f2bc3c; display: flex; flex-direction: column; align-items: center; padding: 40px 0; }
+        .profile-pic { width: 100px; height: 100px; border-radius: 50%; border: 5px solid #fff; object-fit: cover; margin-bottom: 30px; }
+        .side-nav-links { list-style: none; text-align: center; width: 100%; }
+        .side-nav-links li { font-weight: 900; font-size: 0.75rem; color: #222; margin-bottom: 20px; letter-spacing: 1px; }
+        .side-nav-links li a { text-decoration: none; color: inherit; display: block; padding: 5px; }
+        .side-nav-links li a:hover { color: #fff; }
+
+        /* --- CONTENT AREA --- */
+        .main-content { flex: 1; padding: 60px; display: flex; flex-direction: column; justify-content: center; }
+        .section-heading { font-size: 3rem; font-weight: 900; text-transform: uppercase; margin-bottom: 5px; letter-spacing: 2px; }
+        .section-sub { font-size: 1rem; font-weight: 700; color: #666; margin-bottom: 30px; display: inline-block; border-bottom: 3px solid #f2bc3c; padding-bottom: 5px; }
+
+        /* Stats Grid (About) */
+        .stats-container { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 20px; }
+        .stat-item { background: #000; color: #fff; padding: 30px; border-radius: 5px; text-align: center; }
+        .stat-value { font-size: 2.2rem; font-weight: 900; color: #f2bc3c; display: block; line-height: 1; margin-bottom: 5px; }
+        .stat-label { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; opacity: 0.8; }
+
+        /* Resume Grid */
+        .resume-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+        .resume-col h3 { font-size: 1.2rem; font-weight: 900; margin-bottom: 20px; text-transform: uppercase; border-left: 4px solid #f2bc3c; padding-left: 10px; }
+        .resume-item { margin-bottom: 25px; }
+        .resume-item h4 { font-size: 0.95rem; font-weight: 900; color: #222; }
+        .resume-item span { font-size: 0.75rem; color: #f2bc3c; font-weight: 900; background: #000; padding: 3px 8px; border-radius: 3px; display: inline-block; margin: 5px 0; }
+        .resume-item p { font-size: 0.85rem; color: #666; line-height: 1.4; }
+
+        /* Skills Grid */
+        .skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; }
+        .skill-box { background: #f5f5f5; border: 1px solid #ddd; padding: 20px; text-align: center; border-radius: 5px; font-weight: 900; font-size: 0.85rem; border-bottom: 4px solid #f2bc3c; }
+
+        /* Contact Area */
+        .contact-info { background: #f9f9f9; padding: 30px; border-left: 5px solid #000; margin-bottom: 20px; }
+        .contact-info p { font-size: 0.95rem; font-weight: 700; margin-bottom: 10px; }
+        .contact-info i { color: #f2bc3c; margin-right: 10px; }
+
+        /* Mobile Adjustments */
+        @media (max-width: 850px) {
+            .section-box { flex-direction: column; }
+            .hero-image { min-height: 400px; }
+            .yellow-sidebar { width: 100%; flex-direction: row; justify-content: space-around; padding: 15px; }
+            .profile-pic, .side-nav-links { display: none; }
+            .hero-content h1 { font-size: 3.5rem; }
+            .stats-container, .resume-grid, .skills-grid { grid-template-columns: 1fr; }
+            .hero-nav { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="portfolio-wrapper">
+        
+        <div id="home" class="section-box">
+            <div class="hero-content">
+                <h2>HI THERE!</h2>
+                <h1>I'M <span class="accent-yellow">AADIL</span></h1>
+                <div class="title-badge">AT&T DRAFTER / CSE GRADUATE</div>
+                <p class="hero-desc">
+                    Hello! I am a Computer Science Engineer. Right now, I am working in the Telecom Design Engineering field at Amsysis Innovative Solutions. I have great experience in AutoCAD and AT&T drafting.
+                </p>
+                <a href="#contact" class="cta-btn">GET IN TOUCH</a>
+            </div>
+            <div class="hero-image"></div>
+            <div class="hero-nav">
+                <span class="active"></span><span></span><span></span><span></span>
+            </div>
+        </div>
+
+        <div id="about" class="section-box">
+            <div class="yellow-sidebar">
+                <img src="https://res.cloudinary.com/dflairdwe/image/upload/v1769038942/IMG_20260103_091034501_HDR_2_cigtth.jpg" alt="Aadil" class="profile-pic">
+                <ul class="side-nav-links">
+                    <li><a href="#home">HOME</a></li>
+                    <li><a href="#about">ABOUT ME</a></li>
+                    <li><a href="#resume">RESUME</a></li>
+                    <li><a href="#skills">SKILLS</a></li>
+                    <li><a href="#contact">CONTACT</a></li>
+                </ul>
+            </div>
+            <div class="main-content">
+                <h2 class="section-heading">About Me</h2>
+                <span class="section-sub">Aadil / Telecom Design Expert</span>
+                <p style="color: #555; margin-bottom: 25px;">
+                    I completed my B.Tech degree from Phonics Group of Institutions, Roorkee. At present, I am handling important AT&T drafting projects. I use modern software tools like ARAMIS, Waldo, and IQ Geo for my daily work.
+                </p>
+                <div class="stats-container">
+                    <div class="stat-item"><span class="stat-value">70%</span><span class="stat-label">B.Tech Score</span></div>
+                    <div class="stat-item"><span class="stat-value">76.6%</span><span class="stat-label">High School</span></div>
+                    <div class="stat-item"><span class="stat-value">64.6%</span><span class="stat-label">Intermediate</span></div>
+                    <div class="stat-item"><span class="stat-value">2025</span><span class="stat-label">Career Start</span></div>
+                </div>
+            </div>
+        </div>
+
+        <div id="resume" class="section-box">
+            <div class="yellow-sidebar">
+                <img src="https://res.cloudinary.com/dflairdwe/image/upload/v1769038942/IMG_20260103_091034501_HDR_2_cigtth.jpg" alt="Aadil" class="profile-pic">
+                <ul class="side-nav-links">
+                    <li><a href="#home">HOME</a></li>
+                    <li><a href="#about">ABOUT ME</a></li>
+                    <li><a href="#resume">RESUME</a></li>
+                    <li><a href="#skills">SKILLS</a></li>
+                    <li><a href="#contact">CONTACT</a></li>
+                </ul>
+            </div>
+            <div class="main-content">
+                <h2 class="section-heading">Resume</h2>
+                <span class="section-sub">Education & Experience</span>
+                
+                <div class="resume-grid">
+                    <div class="resume-col">
+                        <h3>Education</h3>
+                        <div class="resume-item">
+                            <h4>B.Tech (Computer Science)</h4>
+                            <span>2020 - 2024</span>
+                            <p>Phonics Group of Institutions, Roorkee. Graduated with 70% marks.</p>
+                        </div>
+                        <div class="resume-item">
+                            <h4>Intermediate</h4>
+                            <span>2018 - 2020</span>
+                            <p>B.S.M Inter College, Roorkee. Completed with 64.6% marks.</p>
+                        </div>
+                        <div class="resume-item">
+                            <h4>High School</h4>
+                            <span>2017 - 2018</span>
+                            <p>Vidhayanchal Academy, Landhaura. Completed with 76.6% marks.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="resume-col">
+                        <h3>Experience</h3>
+                        <div class="resume-item">
+                            <h4>AT&T Drafting</h4>
+                            <span>April 2025 - Present</span>
+                            <p>Amsysis Innovation Solutions. Working on ARAMIS, Waldo, and IQ Geo tools.</p>
+                        </div>
+                        <div class="resume-item">
+                            <h4>AutoCAD Drafting</h4>
+                            <span>Previous Experience</span>
+                            <p>Completed Base Map, Aerial jobs, UG jobs, and various 2D drawings.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="skills" class="section-box">
+            <div class="yellow-sidebar">
+                <img src="https://res.cloudinary.com/dflairdwe/image/upload/v1769038942/IMG_20260103_091034501_HDR_2_cigtth.jpg" alt="Aadil" class="profile-pic">
+                <ul class="side-nav-links">
+                    <li><a href="#home">HOME</a></li>
+                    <li><a href="#about">ABOUT ME</a></li>
+                    <li><a href="#resume">RESUME</a></li>
+                    <li><a href="#skills">SKILLS</a></li>
+                    <li><a href="#contact">CONTACT</a></li>
+                </ul>
+            </div>
+            <div class="main-content">
+                <h2 class="section-heading">My Skills</h2>
+                <span class="section-sub">Technical Expertise</span>
+                <p style="color: #666; margin-bottom: 30px;">A showcase of the tools and technologies I use for design and development.</p>
+                
+                <div class="skills-grid">
+                    <div class="skill-box">AT&T Drafting</div>
+                    <div class="skill-box">AutoCAD (2D)</div>
+                    <div class="skill-box">ARAMIS</div>
+                    <div class="skill-box">Waldo & IQ Geo</div>
+                    <div class="skill-box">HTML & CSS</div>
+                    <div class="skill-box">JavaScript</div>
+                    <div class="skill-box">Bootstrap</div>
+                    <div class="skill-box">Python & Java</div>
+                    <div class="skill-box">VS Code & GitHub</div>
+                </div>
+            </div>
+        </div>
+
+        <div id="contact" class="section-box">
+            <div class="yellow-sidebar">
+                <img src="https://res.cloudinary.com/dflairdwe/image/upload/v1769038942/IMG_20260103_091034501_HDR_2_cigtth.jpg" alt="Aadil" class="profile-pic">
+                <ul class="side-nav-links">
+                    <li><a href="#home">HOME</a></li>
+                    <li><a href="#about">ABOUT ME</a></li>
+                    <li><a href="#resume">RESUME</a></li>
+                    <li><a href="#skills">SKILLS</a></li>
+                    <li><a href="#contact">CONTACT</a></li>
+                </ul>
+            </div>
+            <div class="main-content">
+                <h2 class="section-heading">Contact Me</h2>
+                <span class="section-sub">Let's Work Together</span>
+                
+                <div class="contact-info">
+                    <p><strong>Phone:</strong> +91 7819005384 / 7037459805</p>
+                    <p><strong>Email:</strong> aadi91065@gmail.com</p>
+                    <p><strong>Address:</strong> Landhaura, Roorkee, Haridwar, Uttarakhand (247664)</p>
+                    <p><strong>Work Location:</strong> Noida Sector 62</p>
+                </div>
+                
+                <a href="https://wa.me/917819005384" class="cta-btn" style="background:#25D366; color:#fff;">MESSAGE ON WHATSAPP</a>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>
